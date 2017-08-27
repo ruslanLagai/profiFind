@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
       integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
 
@@ -9,24 +9,28 @@
 </head>
 <body>
         <div>
-            <form name="login">
-
-            <div class="row">
-                <div class="col-md-2 no-margin">
-                    <label for="login">Login: </label>
+            <form name="login" action="#" th:action="@{/admin/login}" method="post" th:object="${profile}">
+                <div class="row">
+                    <div class="col-md-2 no-margin">
+                        <label for="login">Login: </label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" th:field="${profile.username}" id="login" value=""/>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <input type="text" id="login" value=""/>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="password">Password: </label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" th:field="${profile.password}" th:f id="password" value=""/>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <label for="password">Password: </label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="submit" />
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <input type="text" id="password" value=""/>
-                </div>
-            </div>
             </form>
         </div>
 

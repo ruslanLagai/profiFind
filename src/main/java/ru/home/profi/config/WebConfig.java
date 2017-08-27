@@ -1,5 +1,6 @@
 package ru.home.profi.config;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,14 +9,17 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"ru.home.profi.controller", "ru.home.profi.config"})
+@ComponentScan(basePackages = {"ru.home.profi.controller", "ru.home.profi.config", "ru.home.profi.dao",
+                "ru.home.profi.service"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
@@ -24,25 +28,27 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public TemplateResolver viewResolver() {
-        TemplateResolver viewResolver = new ServletContextTemplateResolver();
-        viewResolver.setPrefix("/WEB-INF/views/");
-     //   viewResolver.setSuffix(".html");
-        viewResolver.setTemplateMode("HTML5");
-        return viewResolver;
+    public ITemplateResolver viewResolver() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode(TemplateMode.HTML);
+        return resolver;
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine(TemplateResolver resolver) {
+    public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(resolver);
+        templateEngine.setTemplateResolver(viewResolver());
+        templateEngine.addDialect(new SpringSecurityDialect());
         return templateEngine;
     }
 
     @Bean
-    public ThymeleafViewResolver thymeleafViewResolver(SpringTemplateEngine templateEngine) {
+    public ThymeleafViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-        viewResolver.setTemplateEngine(templateEngine);
+        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
         viewResolver.setOrder(0);
         return viewResolver;
     }
