@@ -1,45 +1,63 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-transitional-thymeleaf-4.dtd">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-frameset-thymeleaf-4.dtd">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml11-thymeleaf-4.dtd">
 
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <link href="css/errorStyle.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/common.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Welcome!</title>
 </head>
-<body>
-        <div>
-            <form name="login" action="#" th:action="@{/admin/login}" method="post" th:object="${profile}">
-                <div class="row">
-                    <div class="col-md-2 no-margin">
-                        <label for="login">Login: </label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" th:field="${profile.username}" id="login" value=""/>
+<body class="backgroundPic">
+    <div class="panel panel-default col-md-offset-3 col-md-5 frame opacity">
+        <form action="#" th:action="@{/admin/login}" method="post" th:object="${profile}">
+            <p></p>
+            <div class="row">
+                <div class="col-md-1">
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+                <label class="control-label col-md-3" for="email">Email:</label>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="text" th:field="${profile.username}" class="form-control"
+                           id="email" placeholder="Email или логин">
+                    <label th:if="${#fields.hasErrors('username')}" class="text-danger">
+                        Пользователь не зарегистрирован!
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-1">
+                	<span class="glyphicon glyphicon-lock"></span>
+                </div>
+                <label class="control-label col-md-3" for="pwd">Пароль:</label>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="password" th:field="${profile.password}" class="form-control"
+                           id="pwd" placeholder="Пароль">
+                    <label th:if="${#fields.hasErrors('password')}" class="text-danger">
+                        Неверный пароль!
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="checkbox">
+                        <label><input type="checkbox">Запомнить</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="password">Password: </label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" th:field="${profile.password}" th:f id="password" value=""/>
-                    </div>
+                <div class="col-md-offset-4 col-md-2">
+                    <button type="submit" class="btn btn-success">Войти</button>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="submit" value="submit" />
-                    </div>
-                </div>
-            </form>
-        </div>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
+            </div>
+        </form>
+    </div>
 </body>
 </html>

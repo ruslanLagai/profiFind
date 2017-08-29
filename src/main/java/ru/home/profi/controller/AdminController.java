@@ -29,17 +29,12 @@ public class AdminController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String profile(RedirectAttributes attributes, @Valid Profile profile, Errors errors) {
-        //model.addAttribute("credentials", credentials);
         if (errors.hasErrors())
             return "login";
-
         Profile currentProfile = userService.findByUsername(profile.getUsername());
-        if (currentProfile == null) {
-
+        if (currentProfile == null)
             return "login";
-        }
         attributes.addAttribute("username", currentProfile.getUsername());
-        String u = currentProfile.getUsername();
         attributes.addFlashAttribute("profile", currentProfile);
         return "redirect:/admin/{username}";
     }

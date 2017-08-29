@@ -12,7 +12,7 @@
         <spring.version>4.3.10.RELEASE</spring.version>
         <test.version>4.11</test.version>
         <spring.security.version>4.2.2.RELEASE</spring.security.version>
-        <thymeleaf.version>3.0.6.RELEASE</thymeleaf.version>
+        <thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
         <jpa.version>1.11.1.RELEASE</jpa.version>
     </properties>
 
@@ -31,6 +31,19 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <!-- Spring security-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>4.2.3.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
