@@ -1,10 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="../views/css/register.css" th:href="@{css/register.css}" rel="stylesheet" type="text/css" media="all" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<body class="backgroundPic"><div class="container"><div class="row">
+  <div class="bordered opacity col-sm-11 col-md-11 col-lg-11" style="background-color: ghostwhite;">
+      <div class="container">
+          <div class="row">
+          <h2>Signup Form</h2>
+              <ul class="nav nav-tabs sidenav">
+                  <li class="active"><a data-toggle="tab" href="#employee" class="h4">Employee</a></li>
+                  <li><a data-toggle="tab" href="#employer" class="h4">Employer</a></li>
+              </ul>
+          </div>
+      </div>
+      <br><br>
+
+      <div class="tab-content">
+          <div id="employee" class="tab-pane fade in active">
+              <form action="#" th:action="@{/guest/register}" method="post" th:object="${employee}">
+                  <div class="container" style="width: 80%;">
+                      <div class="row">
+                          <label><b>Name</b></label>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="text" placeholder="Enter Your Name"
+                                     name="name" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <label><b>Surname</b></label>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="text" placeholder="Enter Surname"
+                                     name="surname" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <label><b>Middle Name</b></label>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                             <input class="form-control input-lg" type="text" placeholder="Enter Middle Name"
+                                    name="email" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <label><b>Email</b></label>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="text" placeholder="Enter Email"
+                                     name="email" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <label><b>Password</b></label>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="password" placeholder="Enter Password"
+                                     name="psw" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <label><b>Repeat Password</b></label>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                             <input class="form-control input-lg" type="password" placeholder="Repeat Password" name="psw-repeat"
+                                    required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <button type="button" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 btn btn-lg btn-lg btn-danger">
+                                Cancel</button>
+                              <button type="submit" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 btn btn-lg btn-success">
+                                Sign Up</button>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+
+          <div id="employer" class="tab-pane fade">
+              <form action="#" th:action="@{/guest/register}" method="post" th:object="${employer}">
+                  <div class="container" style="width: 80%;">
+                      <label><b>Company Name</b></label>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="text" placeholder="Enter Company Name"
+                                     name="name" required>
+                          </div>
+                      </div>
+                          <label><b>Email</b></label>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="text" placeholder="Enter Email"
+                                     name="email" required>
+                          </div>
+                      </div>
+                      <label><b>Password</b></label>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="password" placeholder="Enter Password"
+                                     name="psw" required>
+                          </div>
+                      </div>
+                      <label><b>Repeat Password</b></label>
+                      <div class="row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <input class="form-control input-lg" type="password" placeholder="Repeat Password"
+                                     name="psw-repeat" required>
+                          </div>
+                      </div>
+                      <div class="clearfix row">
+                          <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                              <button type="button" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 btn btn-lg btn-lg btn-danger">
+                                Cancel</button>
+                              <button type="submit" class="col-lg-6 col-md-6 col-sm-6 col-xs-6  btn btn-lg btn-success">
+                                Sign Up</button>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div></div></div>
 </body>
 </html>
+

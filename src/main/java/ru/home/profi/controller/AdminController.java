@@ -45,4 +45,5 @@ public class AdminController {
             model.addAttribute("profile", userService.findByUsername(username));
         return "profile";
     }
+
 }

@@ -1,0 +1,58 @@
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Full-width input fields */
+.input-style {
+    width: 100%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    cursor: pointer;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+    width: 80%;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+        width: 100%;
+    }
+}
+
+ul.sidenav li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul.sidenav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.bordered {
+    border: 4px solid #ccc;
+    padding: 25px;
+    margin: 25px;
+}
+
+.opacity {
+    opacity: 0.9;
+}
+
+.backgroundPic {
+    background-image: url("../resources/job.jpg");
+    background-repeat: no-repeat;
+}

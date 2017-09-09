@@ -8,14 +8,17 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{WebConfig.class};
+        return new Class[]{JdbcConfig.class, JpaConfig.class, SecurityConfig.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class<?>[]{
+                WebConfig.class
+        };
     }
 
+    // показывает, что это есть основной сервлет
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
